@@ -24,9 +24,8 @@ export default function Register (){
                 alert("Ha sido imposible registrar el usuario")
             }
         };
-        const handleClick = (event) => {
+        const handleClick = () => {
             fetchData();
-            event.preventDefault();
             reset();
         };
         const button = document.getElementById('reg');

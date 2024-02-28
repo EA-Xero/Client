@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.timeout = 10000;
+axios.defaults.timeout = 60000;
 // Crear una instancia de Axios con una configuración base
 const axiosInstance = axios.create({
   baseURL: 'https://host-4dxa.onrender.com', // URL base de tu API
