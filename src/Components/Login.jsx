@@ -23,8 +23,7 @@ export default function Login() {
             }
         };
     
-        const handleClick = (event) => {
-            event.preventDefault(); // Prevenir el comportamiento predeterminado del evento
+        const handleClick = () => {
             fetchData();
         };
     
@@ -49,11 +48,11 @@ export default function Login() {
                 <div className="mb-3">
                     <label htmlFor="mail" className="form-label">Email address</label>
                     <input required type="email" className="form-control" id="mail" placeholder="tu@mail.com"
-                        onChange={(e) => setLogin({ ...login, email: e.target.value })} />
+                        onSubmit={event => event.preventDefault()} onChange={(e) => setLogin({ ...login, email: e.target.value })} />
                 </div>
                 <label htmlFor="inputPassword" className="form-label">Password</label>
                 <input required type="password" id="inputPassword" className="form-control" aria-describedby="passwordHelpBlock" placeholder="******"
-                    onChange={(e) => setLogin({ ...login, password: e.target.value })} />
+                   onSubmit={event => event.preventDefault()} onChange={(e) => setLogin({ ...login, password: e.target.value })} />
                 <div className="d-flex justify-content-between">
                     <button id="log" className="btn btn-primary mt-3 large w-50 m-1 ">Log In</button>
                     <button onClick={() => setLogin({}, reset())}
