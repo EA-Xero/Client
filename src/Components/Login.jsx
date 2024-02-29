@@ -15,22 +15,23 @@ export default function Login() {
                     password: login.password
                 };
                 const response = await axiosInstance.post('/profile/login', dataToSend);
-                localStorage.setItem("token", response.data)
-                alert('logeado con exito')
-                handleReload()
+                localStorage.setItem("token", response.data);
+                alert('logeado con exito');
+                handleReload();
             } catch (error) {
-                alert(error.response.data)
+                alert(error.response.data);
             }
         };
-        const handleClick = () => {
+    
+        const handleClick = (event) => {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del evento
             fetchData();
         };
-
+    
         const button = document.getElementById('log');
         button.addEventListener('click', handleClick);
         return () => {
             button.removeEventListener('click', handleClick);
-            Event.preventDefault()
         };
     }, [login]);
     useEffect(() => {
