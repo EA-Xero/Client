@@ -30,6 +30,7 @@ export default function Login() {
         button.addEventListener('click', handleClick);
         return () => {
             button.removeEventListener('click', handleClick);
+            Event.preventDefault()
         };
     }, [login]);
     useEffect(() => {
