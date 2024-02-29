@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
+import {  useNavigate } from "react-router-dom";
 import axiosInstance from '../middlewares/axios.js';
 export default function Login() {
     const [login, setLogin] = useState({})
     const [reload, setReload] = useState(false);
+    const navigate = useNavigate();
     function reset() {
         document.getElementById("inputPassword").value = ""
         document.getElementById("mail").value = ""
@@ -35,9 +37,9 @@ export default function Login() {
     }, [login]);
     useEffect(() => {
         if (reload) {
-            window.location.reload();
+            navigate('/profile');
         }
-    }, [reload]);
+    }, [reload,navigate]);
     const handleReload = () => {
         setReload(true);
     };
