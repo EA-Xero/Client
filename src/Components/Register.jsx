@@ -26,7 +26,6 @@ export default function Register (){
         };
         const handleClick = () => {
             fetchData();
-            reset();
             window.location.href = '/';
         };
         const button = document.getElementById('reg');
