@@ -35,7 +35,7 @@ export default function Login() {
     }, [login]);
     useEffect(() => {
         if (reload) {
-            window.location.reload();
+            window.location.href = '/profile';
         }
     }, [reload,]);
     const handleReload = () => {
