@@ -10,7 +10,7 @@ export default function Profile() {
     useEffect(() => {
         const checkToken = async () => {
             try {
-                const res = await axiosInstance.post('/profile/log');
+                const res = await axiosInstance.post('/profile');
                 setUser(res.data);
             } catch (error) {
                 console.error(error);
