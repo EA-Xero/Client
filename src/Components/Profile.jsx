@@ -43,12 +43,9 @@ export default function Profile() {
     if (user) {
         const handleClick = async () => {
             try {
-                // Evitar enviar la solicitud si ya se está procesando una solicitud anterior
                 if (Cambio) {
                     return;
                 }
-        
-                // Marcar que se está procesando una solicitud
                 setCambio(true);
         
                 const useu = {
@@ -63,14 +60,14 @@ export default function Profile() {
                 const response = await axiosInstance.put('/user', useu);
                 console.log(response)
                 if (response.data.code === 200) {
-                    alert(response.data); // Asegúrate de manejar los mensajes de respuesta de manera adecuada
+                    alert(response.data);
+                    handleLogout();
                 } else {
-                    alert('Parece que ha ocurrido un error'); // Mensaje de error genérico
+                    alert('Parece que ha ocurrido un error');
                 }
             } catch (error) {
                 console.error('Ha ocurrido un error:', error);
                 alert('Ha ocurrido un error al procesar la solicitud');
-                // Marcar que se ha completado el procesamiento de la solicitud, ya sea con éxito o no
                 setCambio(false);
             }
         };
