@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import Login from "./Login"
 import Register from "./Register"
 import axiosInstance from '../middlewares/axios';
@@ -7,7 +8,7 @@ export default function Profile() {
     const [isLoading, setIsLoading] = useState(true);
     const [formVisible, setFormVisible] = useState(false);
     const [Cambio, setCambio] = useState(false);
-    
+    const page = useNavigate();
     useEffect(() => {
         const checkToken = async () => {
             try {
@@ -58,10 +59,10 @@ export default function Profile() {
                 };
         
                 const response = await axiosInstance.put('/user', useu);
-                console.log(response)
                 if (response.data.code === 200) {
                     alert(response.data);
                     handleLogout();
+                    page('/profile');
                 } else {
                     alert('Parece que ha ocurrido un error');
                 }
