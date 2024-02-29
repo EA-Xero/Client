@@ -7,10 +7,11 @@ export default function Profile() {
     const [isLoading, setIsLoading] = useState(true);
     const [formVisible, setFormVisible] = useState(false);
     const [Cambio, setCambio] = useState(false);
+    const res =  axiosInstance.post('/profile');
     useEffect(() => {
         const checkToken = async () => {
             try {
-                const res = await axiosInstance.post('/profile');
+                await res
                 setUser(res.data);
             } catch (error) {
                 console.error(error);
@@ -26,7 +27,7 @@ export default function Profile() {
         } else {
             setIsLoading(false);
         }
-    }, []);
+    }, [res]);
 
     const handleLogout = () => {
         setUser(null);
