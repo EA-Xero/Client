@@ -1,7 +1,9 @@
 import { useState,useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import axiosInstance from '../middlewares/axios.js';
 export default function Register (){
     const [user, setUser] = useState({})
+    const page = useNavigate();
     function reset (){
         document.getElementById("form1").reset()
     }
@@ -19,21 +21,21 @@ export default function Register (){
                 };
                 const response = await axiosInstance.post('/profile/register', dataToSend);
                 alert(response.data)
+                page('/profile')
             } catch (error) {
-                console.log(error)
                 alert("Ha sido imposible registrar el usuario")
             }
         };
         const handleClick = () => {
             fetchData();
-            window.location.href = '/';
+            document.getElementById("form1").reset()
         };
         const button = document.getElementById('reg');
         button.addEventListener('click', handleClick);
         return () => {
             button.removeEventListener('click', handleClick);
         };
-    }, [user]);
+    }, [user,page]);
     return (
         <div className="d-flex justify-content-center text-light">
             <div className="border border-light m-5 w-50 rounded p-4 d-flex flex-column">
