@@ -61,11 +61,11 @@ export default function Profile() {
                 const response = await axiosInstance.put('/user', useu);
                 if (response.data.code === 200) {
                     alert(response.data);
-                    handleLogout();
                     page('/profile');
                 } else {
                     alert('Parece que ha ocurrido un error');
                 }
+                handleLogout();
             } catch (error) {
                 console.error('Ha ocurrido un error:', error);
                 alert('Ha ocurrido un error al procesar la solicitud');
